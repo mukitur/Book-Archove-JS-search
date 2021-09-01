@@ -19,13 +19,21 @@
         <!-- Main Search Box -->
         <div class="col-md-6 m-auto py-4">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search which Books you want?">
+                <input id="get-search-input" type="text" class="form-control"
+                    placeholder="Search which Books you want?">
                 <div class="input-group-append ms-2">
-                    <button type="button" class="btn btn-danger">Search</button>
+                    <button onclick="loadBookArchive()" type="button" class="btn btn-primary">Search</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- show search Result -->
+    <div id="show-results" class="row row-cols-1 row-cols-md-4 g-4 mt-5 mx-auto">
+
+    </div>
+
+
 
     <!-- Bootstrap script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
