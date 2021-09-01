@@ -16,16 +16,17 @@ const displayBooks = books => {
     const data = books[0];
     console.log(books);
     const showBooksResult = document.getElementById('show-results');
+    showBooksResult.textContent = '';
     for (const book of books) {
         const booksDIV = document.createElement('booksDIV');
         booksDIV.classList.add('col');
         booksDIV.innerHTML = `
             <div class="card h-100">
                 <div class="card-body">
-                    
+                    <img src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" class="img-fluid rounded-start"  alt="...">
                     <h5 class="card-title">Book Name: ${book.title}</h5>
                     <p class="card-text"><span class="fw-bold">Author:</span> ${book.author_name}</p> 
-                    <p class="card-text"><span class="fw-bold">Published Year:</span> ${book.publish_date}</p> 
+                    <p class="card-text"><span class="fw-bold">Published Year:</span> ${book.first_publish_year}</p> 
                     <p class="card-text"><span class="fw-bold">Publisher:</span> ${book.publisher}</p> 
                 </div>
             </div>
