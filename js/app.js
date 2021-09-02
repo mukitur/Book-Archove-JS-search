@@ -3,16 +3,19 @@ const loadBookArchive = () => {
     const getInputValue = getSearchInput.value;
     //clear Field
     getSearchInput.value = '';
-
     //load Books from API
     const url = `https://openlibrary.org/search.json?q=${getInputValue}`;
-
     fetch(url)
         .then(res => res.json())
         .then(data => displayBooks(data.docs))
 }
 //display Books search result
 const displayBooks = books => {
+    //wrong input check / empty input check /gurbase value check
+    if (books.length === 0) {
+        alert('OPPS... You Enter a Wrong search. please Enter a valid book Name');
+    }
+
     //show search result Items
     const getSearchResultItem = document.getElementById('show-search-item');
     getSearchResultItem.textContent = '';
@@ -27,11 +30,7 @@ const displayBooks = books => {
 
     const showBooksResult = document.getElementById('show-results');
     showBooksResult.textContent = '';
-
-    //wrong input check / empty input check /gurbase value check
-    if (books.length === 0) {
-        alert('OPPS... You Enter a Wrong search. please Enter a valid book Name');
-    }
+    //forEach Loop 
     books.forEach(book => {
         console.log(book);
         const coveriURL = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
