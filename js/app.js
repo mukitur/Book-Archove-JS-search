@@ -13,8 +13,18 @@ const loadBookArchive = () => {
 }
 //display Books search result
 const displayBooks = books => {
-    // const data = books[0];
-    //console.log(books);
+    //show search result Items
+    const getSearchResultItem = document.getElementById('show-search-item');
+    getSearchResultItem.textContent = '';
+    const div = document.createElement('div');
+    div.classList.add('col')
+    div.innerHTML = `
+        <div class="col">
+            <div class="p-3 bg-light text-primary"><h5> Total Item Found: ${books.length}</h5></div>
+        </div>
+    `;
+    getSearchResultItem.appendChild(div);
+
     const showBooksResult = document.getElementById('show-results');
     showBooksResult.textContent = '';
 
@@ -25,8 +35,6 @@ const displayBooks = books => {
     books.forEach(book => {
         console.log(book);
         const coveriURL = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
-        const notFoundImage = `<img src ="images/i.jpg"`;
-
         const booksDIV = document.createElement('booksDIV');
         booksDIV.classList.add('col');
         booksDIV.innerHTML = `
