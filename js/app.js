@@ -7,7 +7,7 @@ const loadBookArchive = () => {
     const url = `https://openlibrary.org/search.json?q=${getInputValue}`;
     fetch(url)
         .then(res => res.json())
-        .then(data => displayBooks(data.docs))
+        .then(data => displayBooks(data))
 }
 //display Books search result
 const displayBooks = books => {
@@ -23,7 +23,7 @@ const displayBooks = books => {
     div.classList.add('col')
     div.innerHTML = `
         <div class="col">
-            <div class="p-3 bg-light text-primary"><h5> Total Item Found: ${books.length}</h5></div>
+            <div class="p-3 bg-light text-primary"><h5> Total Item Found: ${books.numFound}</h5></div>
         </div>
     `;
     getSearchResultItem.appendChild(div);
@@ -31,7 +31,7 @@ const displayBooks = books => {
     const showBooksResult = document.getElementById('show-results');
     showBooksResult.textContent = '';
     //forEach Loop 
-    books.forEach(book => {
+    books.docs.forEach(book => {
         console.log(book);
         //get image cover_i
         const coveriURL = `<img width="100%" src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" >`;
