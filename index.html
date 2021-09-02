@@ -9,12 +9,21 @@
     <!-- Bootstrap Link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <!-- style for spinner -->
+    <style>
+        #spinner {
+            display: none;
+        }
+    </style>
+
+
 </head>
 
 <body class="mx-auto">
 
     <div class="container">
-        <h1 class="text-center mx-auto mt-4 ">Welcome to Book Archive World!!!</h1>
+        <h1 class="text-center text-secondary mx-auto mt-4 ">Welcome to Book Archive World!!!</h1>
         <!-- Main Search Box -->
         <div class="col-md-6 m-auto py-4">
             <div class="input-group ">
@@ -25,6 +34,11 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Spinner -->
+    <div id="spinner" class=" text-center mx-auto spinner-border text-secondary" role="status">
+        <span class="visually-hidden">Loading...</span>
     </div>
 
     <!-- Shoe Number of results -->

@@ -1,6 +1,12 @@
+//spinner function
+const toggleSpinner = displaySpinner => {
+    document.getElementById('spinner').style.display = displaySpinner;
+}
+
 const loadBookArchive = () => {
     const getSearchInput = document.getElementById('get-search-input');
     const getInputValue = getSearchInput.value;
+    toggleSpinner('block');
     //clear Field
     getSearchInput.value = '';
     //load Books from API
@@ -9,6 +15,8 @@ const loadBookArchive = () => {
         .then(res => res.json())
         .then(data => displayBooks(data))
 }
+
+
 //display Books search result
 const displayBooks = books => {
     //wrong input check / empty input check /gurbase value check
@@ -52,4 +60,5 @@ const displayBooks = books => {
         `;
         showBooksResult.appendChild(booksDIV);
     })
+    toggleSpinner('none');
 }
