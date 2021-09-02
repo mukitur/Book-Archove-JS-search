@@ -20,10 +20,9 @@ const loadBookArchive = () => {
 //display Books search result
 const displayBooks = books => {
     //wrong input check / empty input check /gurbase value check
-    if (books.length === 0) {
+    if (books.numFound === 0) {
         alert('OPPS... You Enter a Wrong search. please Enter a valid book Name');
     }
-
     //show search result Items
     const getSearchResultItem = document.getElementById('show-search-item');
     getSearchResultItem.textContent = '';
