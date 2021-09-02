@@ -53,4 +53,3 @@ const displayBooks = books => {
         showBooksResult.appendChild(booksDIV);
     })
 }
-
