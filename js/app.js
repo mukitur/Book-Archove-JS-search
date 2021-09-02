@@ -13,25 +13,34 @@ const loadBookArchive = () => {
 }
 //display Books search result
 const displayBooks = books => {
-    const data = books[0];
-    console.log(books);
+    // const data = books[0];
+    //console.log(books);
     const showBooksResult = document.getElementById('show-results');
     showBooksResult.textContent = '';
-    for (const book of books) {
+
+    //wrong input check / empty input check /gurbase value check
+    if (books.length === 0) {
+        alert('OPPS... You Enter a Wrong search. please Enter a valid book Name');
+    }
+    books.forEach(book => {
+        console.log(book);
+        const coveriURL = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
+        const notFoundImage = `<img src ="images/i.jpg"`;
+
         const booksDIV = document.createElement('booksDIV');
         booksDIV.classList.add('col');
         booksDIV.innerHTML = `
             <div class="card h-100">
                 <div class="card-body">
-                    <img src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" class="img-fluid rounded-start"  alt="...">
+                    <p><img width="100%" src="${coveriURL ? coveriURL : 'not found'}" class="img-fluid rounded "  alt="..."></p>
                     <h5 class="card-title">Book Name: ${book.title}</h5>
-                    <p class="card-text"><span class="fw-bold">Author:</span> ${book.author_name}</p> 
+                    <p class="card-text"><span class="fw-bold">Author:</span> ${book.author_name ? book.author_name : 'Not Available'}</p> 
                     <p class="card-text"><span class="fw-bold">Published Year:</span> ${book.first_publish_year}</p> 
-                    <p class="card-text"><span class="fw-bold">Publisher:</span> ${book.publisher}</p> 
+                    <p class="card-text"><span class="fw-bold">Publisher:</span> ${book.publisher ? book.publisher : 'NOT Available'}</p> 
                 </div>
             </div>
         `;
         showBooksResult.appendChild(booksDIV);
-    }
+    })
 }
 
