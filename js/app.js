@@ -5,7 +5,7 @@ const loadBookArchive = () => {
     getSearchInput.value = '';
 
     //load Books from API
-    const url = `http://openlibrary.org/search.json?q=${getInputValue}`;
+    const url = `https://openlibrary.org/search.json?q=${getInputValue}`;
 
     fetch(url)
         .then(res => res.json())
@@ -32,10 +32,10 @@ const displayBooks = books => {
         booksDIV.innerHTML = `
             <div class="card h-100">
                 <div class="card-body">
-                    <p><img width="100%" src="${coveriURL ? coveriURL : 'not found'}" class="img-fluid rounded "  alt="..."></p>
+                    <p><img width="100%" src="${coveriURL}" class="img-fluid rounded "  alt="..."></p>
                     <h5 class="card-title">Book Name: ${book.title}</h5>
-                    <p class="card-text"><span class="fw-bold">Author:</span> ${book.author_name ? book.author_name : 'Not Available'}</p> 
-                    <p class="card-text"><span class="fw-bold">Published Year:</span> ${book.first_publish_year}</p> 
+                    <p class="card-text"><span class="fw-bold">Author:</span> ${book.author_name ? book.author_name : 'NOT Available'}</p> 
+                    <p class="card-text"><span class="fw-bold">Published Year:</span> ${book.first_publish_year ? book.first_publish_year : 'NOT Found'}</p> 
                     <p class="card-text"><span class="fw-bold">Publisher:</span> ${book.publisher ? book.publisher : 'NOT Available'}</p> 
                 </div>
             </div>
