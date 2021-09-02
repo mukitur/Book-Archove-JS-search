@@ -33,13 +33,16 @@ const displayBooks = books => {
     //forEach Loop 
     books.forEach(book => {
         console.log(book);
-        const coveriURL = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
+        //get image cover_i
+        const coveriURL = `<img width="100%" src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" >`;
+        const defaultImage = `<img width="100%" src = "images/blank_image.png" >`;
+
         const booksDIV = document.createElement('booksDIV');
         booksDIV.classList.add('col');
         booksDIV.innerHTML = `
             <div class="card h-100">
                 <div class="card-body">
-                    <p><img width="100%" src="${coveriURL}" class="img-fluid rounded "  alt="..."></p>
+                    <p class="img-fluid rounded-start ps-2, py-4 "> ${book.cover_i ? coveriURL : defaultImage}</p>
                     <h5 class="card-title">Book Name: ${book.title}</h5>
                     <p class="card-text"><span class="fw-bold">Author:</span> ${book.author_name ? book.author_name : 'NOT Available'}</p> 
                     <p class="card-text"><span class="fw-bold">Published Year:</span> ${book.first_publish_year ? book.first_publish_year : 'NOT Found'}</p> 
